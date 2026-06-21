@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0ABFBC;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  
+  --color-primary-color : #0ABFBC;
+  --color-secundary-color : #fcf7c5; /* sempre colocar o ponto e vírgula para fechar o parágrafo*/
+
+  --color-white-color: #fff;
+  --color-black-color : #000;
+
+  /*
+  const fontSizes : FontSizes = {
+    h1 : "24px",
+    h2 : "16px",
+    h3 : "12px",
+    p : "10px",
+    light_p : "8px"
+    
+} 
+  */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0ABFBC;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
