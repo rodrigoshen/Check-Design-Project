@@ -19,7 +19,7 @@ export default function Header() {
         <motion.div
             initial={{ opacity : 0, y : -100 }}
             animate={{ opacity : 1, y : 0 }}
-            transition={{ duration : 0.8, ease : "easeInOut" }}
+            transition={{ duration : 0.8, ease : "easeOut" }}
         >
             <Image alt="logo_photo" src={"/logo/logo.png"} width={250} height={250}/>
         </motion.div>
@@ -27,7 +27,7 @@ export default function Header() {
         <motion.div
             initial={{ opacity : 0, x : -100 }}
             animate={{ opacity : 1, x : 0 }}
-            transition={{ duration : 0.8, ease : "easeInOut" }}
+            transition={{ duration : 0.8, ease : "easeOut" }}
         >
             <nav className="flex w-[80vw] h-12 bg-white justify-around items-center">
                 { links.map( (link) => {
