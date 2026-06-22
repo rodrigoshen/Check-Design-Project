@@ -3,6 +3,8 @@
 :root {
   --background: #0ABFBC;
   --foreground: #171717;
+
+  font-size: 16px;
 }
 
 @theme inline {
@@ -17,6 +19,12 @@
 
   --color-white-color: #fff;
   --color-black-color : #000;
+
+  --font-size-sm: 0.5rem;
+  --font-size-base: 0.625rem;
+  --font-size-lg: 0.75rem;
+  --font-size-xl: 1rem;
+  --font-size-2xl: 1.5rem;
 
   /*
   const fontSizes : FontSizes = {
@@ -40,5 +48,12 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
+
+/*
+
+Vamos ter que fazer uma responsividade para
+
+Tablet e Desktop
+
+*/
