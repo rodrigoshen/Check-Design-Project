@@ -25,7 +25,7 @@ const skills = [
 export default function AboutPage() {
 
     return (
-        <div className="flex gap-5 w-screen justify-center items-center flex-col">
+        <div className="flex gap-5 w-screen justify-center items-center flex-col overflow-x-hidden">
             <div
                 className="flex flex-col items-center bg-black-color w-full "
             >
@@ -34,7 +34,7 @@ export default function AboutPage() {
                 >
                     <Header logo="/logo/white-logo.png" logo_width={200} logo_height={200}/>
                     <div
-                        className="flex flex-col pt-5 items-center"
+                        className="flex flex-col pt-5 pb-10 items-center"
                     >
                     <motion.div
                         initial={{opacity : 0, x : 100}}
@@ -91,7 +91,7 @@ export default function AboutPage() {
                         </motion.div>
                         </div>
                     </div>
-                    <div className="flex flex-col items-center gap-5">
+                    <div className="flex flex-col items-center gap-5 pb-10">
                         { skills.map( (skill) => {
                             
                            return (
@@ -103,7 +103,7 @@ export default function AboutPage() {
                                 initial={{ opacity : 0, x : 100 }}
                                 whileInView={{ opacity : 1, x : 0 }}
                                 transition={{ duration : 0.6, ease : "anticipate"}}
-                                viewport={{ once : true, amount : 0.5}}
+                                viewport={{ once : true, amount : 0.35}}
 
                                 >
                                         <p  className="font-bold text-xl text-center">

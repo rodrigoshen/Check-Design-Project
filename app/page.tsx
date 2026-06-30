@@ -9,7 +9,7 @@ import Feature from "./components/Feature";
 
 export default function Home() {
   return (
-    <div className="flex justify-center items-center flex-col">
+    <div className="flex justify-center items-center flex-col overflow-x-hidden">
       <div className="flex gap-5 w-[80vw] justify-start items-start flex-col">
         <Header logo="/logo/logo.png" logo_width={250} logo_height={250}/>
         <motion.div
