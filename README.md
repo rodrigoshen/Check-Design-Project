@@ -61,3 +61,12 @@ npm run test:coverage
 npm run test:ui
 ```
 
+--- 
+
+### Produção - fazendo a build do projeto
+
+```bash
+# esse comando irá rodar a build da aplicação para analisar o ambiente de produção
+npm run build
+```
+
