@@ -5,12 +5,13 @@ import { motion } from "framer-motion"
 import SectionIntro from "./components/section/SectionIntro";
 import Image from "next/image";
 import Footer from "./components/Footer";
+import Feature from "./components/Feature";
 
 export default function Home() {
   return (
     <div className="flex justify-center items-center flex-col">
       <div className="flex gap-5 w-[80vw] justify-start items-start flex-col">
-        <Header/>
+        <Header logo="/logo/logo.png" logo_width={250} logo_height={250}/>
         <motion.div
           initial={{ opacity : 0, x : -100 }}
           animate={{ opacity : 1, x : 0 }}
@@ -79,7 +80,12 @@ export default function Home() {
          </div>
          </motion.div>
       </div>
-      <Footer/>
+      <div
+        className="flex justify-center items-center bg-secundary-color w-full pb-10"
+      >
+        <Feature/>
+      </div>
+      <Footer logo="/logo/logo.png" logo_width={250} logo_height={200}/>
       <span className="flex px-8 py-4 justify-center items-center bg-black-color text-sm w-full " >
         Copyright © 2026 Todos os direitos reservados 
       </span>
