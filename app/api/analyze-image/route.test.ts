@@ -27,6 +27,22 @@ function makeRequest( body : Record<string, unknown> ) : NextRequest {
     });
 }
 
+// helper para avisar o limite de quota
+
+function makeQuotaExceededError() {
+    const error = new Error(JSON.stringify({
+        error : {
+            code : 429,
+            message : "You exceeded your current quota, please check your plan and billing details.",
+            status : "RESOURCE_EXHAUSTED"
+        }
+    }));
+
+    error.name = "ApiError"
+
+    return error
+}
+
 describe("POST /api/analyze-image", () => {
 
     beforeEach(() => {
@@ -93,19 +109,6 @@ describe("POST /api/analyze-image", () => {
 
   });
 
-  it("should be return the error if the Gemini api fail", async () => {
-
-    mockGenerateContent.mockRejectedValueOnce(new Error("not available API"));
-
-    const req = makeRequest({
-        image: "abc123==",
-        mediaType: "image/png",
-    })
-
-    await expect(POST(req)).rejects.toThrow("not available API")
-
-  });
-
   it("should be return a fallback string if failed the completion of gemini", async () => {
 
     mockGenerateContent.mockResolvedValueOnce({ text: undefined });
@@ -123,7 +126,38 @@ describe("POST /api/analyze-image", () => {
 
   });
 
+  it("should be return a 500 status error", async () => {
 
+     mockGenerateContent.mockRejectedValueOnce(new Error("not available API"));
 
+        const req = makeRequest({
+            image: "abc123==",
+            mediaType: "image/png",
+        })
+
+        const res = await POST(req);
+
+        expect(res.status).toBe(500);
+        const body = await res.json();
+        expect(body.error).toBe("error to analyze the image on the server");
+
+  });
+
+  it("should be return an 429 error status", async () => {
+
+     mockGenerateContent.mockRejectedValueOnce(makeQuotaExceededError());
+
+        const req = makeRequest({
+            image: "abc123==",
+            mediaType: "image/png",
+        });
+
+        const res = await POST(req);
+
+        expect(res.status).toBe(429);
+        const body = await res.json();
+        expect(body.error).toBe("the api of AI needs more money");
+
+  });
 
 });

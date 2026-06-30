@@ -18,6 +18,8 @@
         }
 
 
+    try {
+
         const completion = await gemini_ai.models.generateContent({
             model : "gemini-2.0-flash",
             contents : [
@@ -59,6 +61,27 @@
         const result = completion.text ?? "it was not possible to generate the content"
 
         return NextResponse.json({ result })
+    
+        } catch ( err ) {
+            console.error("API error: ", err);
+
+            const isQuotaError = err instanceof Error && err.name === "ApiError" && err.message.includes("RESOURCE_EXHAUSTED");
+
+            if ( isQuotaError ) {
+                return NextResponse.json({
+                    error : "the api of AI needs more money"
+                }, {
+                    status : 429
+                });
+            } else {
+                return NextResponse.json({
+                    error : "error to analyze the image on the server"
+                }, {
+                    status : 500
+                });
+            }
+
+        }
     }
 
 

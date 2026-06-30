@@ -43,7 +43,7 @@ export default function AboutPage() {
                         viewport={{ once : true, amount: 0.2}}
                     >
                         <Image 
-                            className="flex items-center pt-5 pb-5"
+                            className="flex items-center pt-5 pb-5 rounded-full"
                             src={"/images/my-photo.png"} alt="my-photo" width={250} height={250}
                         />
                     </motion.div>
