@@ -39,7 +39,7 @@ export default function Feature() {
       });
 
       const data = await response.json();
-      setResult(data.result ?? "Nenhuma resposta recebida.");
+      setResult(data.result ?? "Nenhuma resposta recebida. Tá funcionando ainda não chapa kkkkkkk");
     } catch (err) {
       setResult(`Erro ao analisar a imagem, tá funcionando ainda não chapa kkkkkkk, erro em seguida: ${err}`);
     } finally {
